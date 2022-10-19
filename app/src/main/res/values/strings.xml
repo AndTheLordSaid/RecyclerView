@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+
+    <string-array name="title">
+        <item>Couch</item>
+        <item>Fire</item>
+        <item>Gaming</item>
+        <item>Lock</item>
+        <item>Movies</item>
+        <item>Sports</item>
+        <item>Inbox</item>
+        <item>Transport</item>
+        <item>Hygiene</item>
+        <item>Work</item>
+    </string-array>
+    <string-array name="description">
+        <item>Co</item>
+        <item>Fi</item>
+        <item>Ga</item>
+        <item>Lo</item>
+        <item>Mo</item>
+        <item>Sp</item>
+        <item>In</item>
+        <item>Tr</item>
+        <item>Hy</item>
+        <item>Wo</item>
+    </string-array>
+    <string-array name="slang">
+        <item>Chillax</item>
+        <item>Fye</item>
+        <item>Jamin</item>
+        <item>Lockdown</item>
+        <item>Flix</item>
+        <item>Diski</item>
+        <item>Dm</item>
+        <item>Combi</item>
+        <item>Tlhapa</item>
+        <item>Span</item>
+    </string-array>
+</resources>
