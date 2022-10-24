@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
     ArrayList<ItemModel> itemModels = new ArrayList<>();
 
     int[] itemPics = {R.drawable.couch,R.drawable.fire,R.drawable.gaming,R.drawable.lock,R.drawable.movies,
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
         setUpItemModels();
-        I_RecyclerAdapter adapter = new I_RecyclerAdapter(this, itemModels);
+        I_RecyclerAdapter adapter = new I_RecyclerAdapter(this, itemModels, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -33,5 +34,17 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < titles.length; i++) {
             itemModels.add(new ItemModel(titles[i], descriptions[i], lingos[i], itemPics[i]));
         }
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        /*Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+
+        intent.putExtra("title", itemModels.get(position).getTitle());
+        intent.putExtra("description", itemModels.get(position).getDescription());
+        intent.putExtra("lingo", itemModels.get(position).getLingo());
+        intent.putExtra("image", itemModels.get(position).getImage());
+
+        startActivity(intent);*/
     }
 }

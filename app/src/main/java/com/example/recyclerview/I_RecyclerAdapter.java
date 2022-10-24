@@ -15,10 +15,12 @@ import java.util.ArrayList;
 public class I_RecyclerAdapter extends RecyclerView.Adapter<I_RecyclerAdapter.MyViewHolder> {
     ArrayList<ItemModel> itemModels;
     Context context;
+    private final RecyclerViewInterface recyclerViewInterface;
 
-    public I_RecyclerAdapter(Context context, ArrayList<ItemModel> itemModels) {
+    public I_RecyclerAdapter(Context context, ArrayList<ItemModel> itemModels, RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.itemModels = itemModels;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
@@ -27,7 +29,7 @@ public class I_RecyclerAdapter extends RecyclerView.Adapter<I_RecyclerAdapter.My
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_view_row, parent, false);
-        return new I_RecyclerAdapter.MyViewHolder(view);
+        return new I_RecyclerAdapter.MyViewHolder(view,recyclerViewInterface);
     }
 
     @Override
@@ -48,13 +50,25 @@ public class I_RecyclerAdapter extends RecyclerView.Adapter<I_RecyclerAdapter.My
         ImageView imageView;
         TextView tvHeading, tvDescription, tvLingo;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
             tvHeading = itemView.findViewById(R.id.textHeading);
             tvDescription = itemView.findViewById(R.id.textDescription);
             tvLingo = itemView.findViewById(R.id.textSlang);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (recyclerViewInterface != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onItemClicked(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }
